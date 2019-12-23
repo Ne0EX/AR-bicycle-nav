@@ -9,6 +9,16 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import androidx.core.app.ComponentActivity
+
+import androidx.core.app.ComponentActivity.ExtraData
+
+import androidx.core.content.ContextCompat.getSystemService
+
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -36,8 +46,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val mahidol = LatLng(13.7945775,100.3212284)
+        var zoomLevel = 15.0f //This goes up to 21
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mahidol, zoomLevel))
+        mMap.addMarker(MarkerOptions().position(mahidol).title("Mark in Mahidol University"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(mahidol))
     }
 }
